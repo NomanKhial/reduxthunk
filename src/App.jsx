@@ -29,6 +29,9 @@ function App() {
     .filter(
       (product) => (selectedTag ? product.tags.includes(selectedTag) : true) // Check for tag in product tags
     );
+  // .filter(
+  //   (product) => (selectedTag ? product.tags.includes(selectedTag) : true) // Check for tag in product tags
+  // );
 
   // #############################################
   if (loading) {
@@ -57,7 +60,12 @@ function App() {
       </div>
 
       {selectedTag && (
-        <button onClick={() => setSelectedTag(null)}>Clear Filter</button>
+        <button
+          style={{ backgroundColor: "crimson", color: "white" }}
+          onClick={() => setSelectedTag(null)}
+        >
+          Clear Filter
+        </button>
       )}
 
       {/* Render buttons for each tag */}
@@ -66,7 +74,7 @@ function App() {
           key={index}
           onClick={() => filterProoducts(tag)}
           style={{
-            backgroundColor: selectedTag === tag ? "lightblue" : "transparent",
+            backgroundColor: selectedTag === tag ? "green" : "transparent",
           }}
         >
           {tag}
@@ -74,17 +82,19 @@ function App() {
       ))}
 
       {/* Render filtered products */}
-      {!filteredProducts.length ? (
-        <h2>No Items Found...</h2>
-      ) : (
-        filteredProducts.map((product, index) => (
-          <div key={index}>
-            <img src={product.thumbnail} alt={product.title} />
-            <p>{product.title}</p>
-            <span>{product.price} $</span>
-          </div>
-        ))
-      )}
+      <div className="appStore">
+        {!filteredProducts.length ? (
+          <h2>No Items Found...</h2>
+        ) : (
+          filteredProducts.map((product, index) => (
+            <div key={index}>
+              <img src={product.thumbnail} alt={product.title} />
+              <p>{product.title}</p>
+              <span>{product.price} $</span>
+            </div>
+          ))
+        )}
+      </div>
     </>
   );
 }

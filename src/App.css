@@ -40,3 +40,9 @@
 .read-the-docs {
   color: #888;
 }
+.appStore {
+  display: flex;
+  justify-content: start;
+  flex-wrap: wrap;
+  align-items: center;
+}
